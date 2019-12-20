@@ -8,10 +8,13 @@ pylint = "*"
 ipython = "*"
 black = "*"
 mypy = "*"
+jupyter = "*"
 
 [packages]
 google-cloud-texttospeech = "*"
 pychromecast = "*"
+requests = "*"
+lxml = "*"
 
 [requires]
 python_version = "3.8"
