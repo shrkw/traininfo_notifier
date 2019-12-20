@@ -1,8 +1,7 @@
+tmp/
 
 # Created by https://www.gitignore.io/api/venv,python,visualstudiocode,mypy
 # Edit at https://www.gitignore.io/?templates=venv,python,visualstudiocode,mypy
-
-#!! ERROR: mypy is undefined. Use list command to see defined gitignore types !!#
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
