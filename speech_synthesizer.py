@@ -1,18 +1,18 @@
 import datetime
+from pathlib import Path
 
 import google.cloud.texttospeech
 from google.cloud import texttospeech_v1 as texttospeech
 
 
 class SpeechSynthesizer:
-    def synthesize(self, text):
+    def synthesize(self, text: str, out_path: Path = Path("tmp")) -> Path:
         d = datetime.datetime.now()
-
+        dest_file_name = out_path.joinpath(f'${d.strftime("%Y-%m-%dT%H%M%S")}.mp3')
         self.synthesize_text_with_audio_profile(
-            text,
-            f'${d.strftime("%Y-%m-%dT%H%M%S")}.mp3',
-            "small-bluetooth-speaker-class-device",
+            text, dest_file_name, "small-bluetooth-speaker-class-device",
         )
+        return dest_file_name
 
     # pylint: disable=no-member
     def synthesize_text_with_audio_profile(self, text, output, effects_profile_id):
