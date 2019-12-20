@@ -6,6 +6,9 @@
     "python.linting.pylintEnabled": true,
     "[python]": {
         "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true,
+        },
     },
     "python.linting.lintOnSave": true
 }
