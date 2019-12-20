@@ -17,7 +17,7 @@ class SpeechSynthesizer:
         return dest_file_name
 
     # pylint: disable=no-member
-    def synthesize_text_with_audio_profile(self, text, output, effects_profile_id):
+    def synthesize_text_with_audio_profile(self, text: str, output: Path, effects_profile_id: str):
         client = texttospeech.TextToSpeechClient()
         input_text = texttospeech.types.SynthesisInput(text=text)
         voice = texttospeech.types.VoiceSelectionParams(language_code="ja-JP")

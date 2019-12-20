@@ -2,7 +2,7 @@ import pychromecast
 
 
 class Caster:
-    def __init__(self, friendly_name):
+    def __init__(self, friendly_name: str):
         chromecasts = pychromecast.get_chromecasts()
         self.living = next(
             cc for cc in chromecasts if cc.device.friendly_name == friendly_name
