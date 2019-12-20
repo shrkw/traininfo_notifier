@@ -7,7 +7,7 @@
 
 This system uses 2 processes:
 
-* A: Discover 遅延情報 and generate audio file
+* A: Scrape train info and generate audio file
     * kicked by crond
 * B: Audio file hosting server
 
