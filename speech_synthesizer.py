@@ -6,7 +6,7 @@ from google.cloud import texttospeech_v1 as texttospeech
 
 
 class SpeechSynthesizer:
-    def synthesize(self, text: str, out_path: Path = Path("tmp")) -> str:
+    def synthesize(self, text: str, out_path: Path = Path("tmp")) -> Path:
         d = datetime.datetime.now()
         out_path.mkdir(exist_ok=True)
         dest_file_name = f'{d.strftime("%Y-%m-%dT%H%M%S")}.mp3'
@@ -14,10 +14,12 @@ class SpeechSynthesizer:
         self.synthesize_text_with_audio_profile(
             text, dest_path, "small-bluetooth-speaker-class-device",
         )
-        return dest_file_name
+        return dest_path
 
     # pylint: disable=no-member
-    def synthesize_text_with_audio_profile(self, text: str, output: Path, effects_profile_id: str):
+    def synthesize_text_with_audio_profile(
+        self, text: str, output: Path, effects_profile_id: str
+    ):
         client = texttospeech.TextToSpeechClient()
         input_text = texttospeech.types.SynthesisInput(text=text)
         voice = texttospeech.types.VoiceSelectionParams(language_code="ja-JP")
