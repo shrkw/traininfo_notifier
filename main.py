@@ -2,6 +2,7 @@ import http.server
 import os
 import socket
 import socketserver
+import time
 from multiprocessing import Process
 
 from caster import Caster
@@ -43,6 +44,8 @@ def main():
     server_host = ip_addr()
     print(f"serve at {server_host}:{port}")
     caster.cast(f"http://{server_host}:{port}/{file_name}")
+    time.sleep(20)
+
     print("Finish")
 
 
