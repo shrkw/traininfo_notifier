@@ -35,7 +35,7 @@ def main():
     title, status = scraper.fetch_train_info(train_info_url)
     # synthesize text
     synth = SpeechSynthesizer()
-    file_name = synth.synthesize(f"{title}の運行情報です。 {status}")
+    file_name = synth.synthesize(f"{title}の運行情報です。 {status}", lazy=True)
 
     port = 8000
     p = Process(target=serve, args=(port,), daemon=True)
