@@ -29,7 +29,9 @@ class SpeechSynthesizer:
     ):
         client = texttospeech.TextToSpeechClient()
         input_text = texttospeech.types.SynthesisInput(text=text)
-        voice = texttospeech.types.VoiceSelectionParams(language_code="ja-JP")
+        voice = texttospeech.types.VoiceSelectionParams(
+            language_code="ja-JP", name="ja-JP-Wavenet-B"
+        )
         audio_config = texttospeech.types.AudioConfig(
             audio_encoding=texttospeech.enums.AudioEncoding.MP3,
             effects_profile_id=[effects_profile_id],
