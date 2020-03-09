@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "cddea88f8bd5972f01a51d6173397c834b41044b8288c894f7ae68f98182bfe4"
+            "sha256": "b84f9e443e70fa25c541d819db97c8008277eb1b95d4017b0d801fc527bfa89b"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -292,10 +292,10 @@
         },
         "click": {
             "hashes": [
-                "sha256:2335065e6395b9e67ca716de5f7526736bfa6ceead690adf616d925bdc622b13",
-                "sha256:5b94b49521f6456670fdb30cd82a4eca9412788a93fa6dd6df72c94d5a8ff2d7"
+                "sha256:482f552f2d5452b9eeffc44165e8b790dd53f75bcce099a812b65e0357e860e2",
+                "sha256:91eb2c43db0254aaf3b14a3c4e0db914a900aa09bbc33c6e87ede4a8f7c969dc"
             ],
-            "version": "==7.0"
+            "version": "==7.1"
         },
         "decorator": {
             "hashes": [
@@ -702,6 +702,15 @@
                 "sha256:f1ac2dc65105a53c1c2d72b1d3e98c2464a133b4067a51a3d2477b28449709a0"
             ],
             "version": "==2020.2.20"
+        },
+        "rope": {
+            "hashes": [
+                "sha256:52423a7eebb5306a6d63bdc91a7c657db51ac9babfb8341c9a1440831ecf3203",
+                "sha256:ae1fa2fd56f64f4cc9be46493ce54bed0dd12dee03980c61a4393d89d84029ad",
+                "sha256:d2830142c2e046f5fc26a022fe680675b6f48f81c7fc1f03a950706e746e9dfe"
+            ],
+            "index": "pypi",
+            "version": "==0.16.0"
         },
         "send2trash": {
             "hashes": [

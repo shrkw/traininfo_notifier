@@ -9,6 +9,7 @@ ipython = "*"
 black = "*"
 mypy = "*"
 jupyter = "*"
+rope = "*"
 
 [packages]
 google-cloud-texttospeech = "*"
