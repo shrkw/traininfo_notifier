@@ -1,9 +1,11 @@
+import datetime
 import http.server
 import os
 import socket
 import socketserver
 import time
 from multiprocessing import Process
+from pathlib import Path
 
 from caster import Caster
 from speech_synthesizer import SpeechSynthesizer
@@ -34,8 +36,14 @@ def main():
     scraper = YahooTrainInfoScraper()
     title, status = scraper.fetch_train_info(train_info_url)
     # synthesize text
-    synth = SpeechSynthesizer()
-    file_name = synth.synthesize(f"{title}の運行情報です。 {status}", lazy=True)
+    dest_path = Path("tmp").joinpath(
+        "on_time.mp3"
+        if "平常運転" in status
+        else f'{datetime.datetime.now().strftime("%Y-%m-%dT%H%M%S")}.mp3'
+    )
+    if not dest_path.exists():
+        synth = SpeechSynthesizer()
+        synth.synthesize(f"{title}の運行情報です。 {status}", dest_path)
 
     port = 8000
     p = Process(target=serve, args=(port,), daemon=True)
@@ -45,7 +53,7 @@ def main():
     caster = Caster(friendly_name)
     server_host = ip_addr()
     print(f"serve at {server_host}:{port}")
-    caster.cast(f"http://{server_host}:{port}/{file_name}")
+    caster.cast(f"http://{server_host}:{port}/{dest_path}")
     time.sleep(20)
 
     print("Finish")

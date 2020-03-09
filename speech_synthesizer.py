@@ -1,4 +1,3 @@
-import datetime
 from pathlib import Path
 
 import google.cloud.texttospeech
@@ -6,18 +5,8 @@ from google.cloud import texttospeech_v1 as texttospeech
 
 
 class SpeechSynthesizer:
-    def synthesize(
-        self, text: str, out_path: Path = Path("tmp"), lazy: bool = True
-    ) -> Path:
-        d = datetime.datetime.now()
-        out_path.mkdir(exist_ok=True)
-        if lazy and "平常運転" in text:
-            dest_file_name = "on_time.mp3"
-        else:
-            dest_file_name = f'{d.strftime("%Y-%m-%dT%H%M%S")}.mp3'
-        dest_path = out_path.joinpath(dest_file_name)
-        if dest_path.exists():
-            return dest_path
+    def synthesize(self, text: str, dest_path: Path) -> Path:
+        dest_path.parent.mkdir(exist_ok=True)
         self.synthesize_text_with_audio_profile(
             text, dest_path, "small-bluetooth-speaker-class-device",
         )
