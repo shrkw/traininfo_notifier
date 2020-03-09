@@ -4,33 +4,7 @@ This system creates sub process to host audio file for enabling to take by Googl
 
 ## Develop
 
-### Python runtime
-
-```bash
-VERSION=3.8.0
-```
-
-```bash
-brew install pyenv
-brew install zlib sqlite
-export LDFLAGS="${LDFLAGS} -L/usr/local/opt/zlib/lib"
-export CPPFLAGS="${CPPFLAGS} -I/usr/local/opt/zlib/include"
-export LDFLAGS="${LDFLAGS} -L/usr/local/opt/sqlite/lib"
-export CPPFLAGS="${CPPFLAGS} -I/usr/local/opt/sqlite/include"
-export PKG_CONFIG_PATH="${PKG_CONFIG_PATH} /usr/local/opt/zlib/lib/pkgconfig"
-export PKG_CONFIG_PATH="${PKG_CONFIG_PATH} /usr/local/opt/sqlite/lib/pkgconfig"
-```
-
-```bash
-pyenv install ${VERSION}
-```
-
-### pipenv
-
-```bash
-brew install pipenv
-PIPENV_VENV_IN_PROJECT=true pipenv --python=$(pyenv root)/versions/${VERSION}/bin/python install
-```
+use VS Code Remote development extension.
 
 ## Deploy
 
