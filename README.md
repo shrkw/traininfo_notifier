@@ -14,7 +14,7 @@ install git and pip at first.
 pip3 install pipenv
 git clone git@github.com:shrkw/traininfo_notifier.git
 cd traininfo_notifier
-PIPENV_VENV_IN_PROJECT=true pipenv install
+python3 -m venv .venv && ~/.poetry/bin/poetry install --no-dev
 ```
 
 I let this run on Raspbian and lxml is installed by apt.
@@ -32,5 +32,5 @@ Make sure you have valid GCP access.
 * TRAIN_INFO_URL
 
 ```bash
-cd /home/pi/traininfo_notifier; GOOGLE_APPLICATION_CREDENTIALS=xxx1 FRIENDLY_NAME=xxx2 TRAIN_INFO_URL=https://transit.yahoo.co.jp/traininfo/detail/xxx/ pipenv run python main.py
+cd /home/pi/traininfo_notifier; GOOGLE_APPLICATION_CREDENTIALS=xxx1 FRIENDLY_NAME=xxx2 TRAIN_INFO_URL=https://transit.yahoo.co.jp/traininfo/detail/xxx/ poetry run python main.py
 ```
