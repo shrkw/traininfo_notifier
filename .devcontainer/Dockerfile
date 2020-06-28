@@ -47,10 +47,9 @@ RUN apt-get update \
 
 RUN pip install poetry
 
-USER $USERNAME
-
 COPY pyproject.toml poetry.lock ./
-RUN poetry install
+RUN poetry config virtualenvs.create false \
+    && poetry install
 
 # Switch back to dialog for any ad-hoc use of apt-get
 ENV DEBIAN_FRONTEND=dialog
