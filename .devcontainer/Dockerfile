@@ -45,9 +45,12 @@ RUN apt-get update \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
 
-# Switch back to dialog for any ad-hoc use of apt-get
-ENV DEBIAN_FRONTEND=dialog
+RUN pip install poetry
 
 USER $USERNAME
-RUN pip --disable-pip-version-check --no-cache-dir install --user pipenv
-ENV PATH $PATH:~/.local/bin/
+
+COPY pyproject.toml poetry.lock ./
+RUN poetry install
+
+# Switch back to dialog for any ad-hoc use of apt-get
+ENV DEBIAN_FRONTEND=dialog
