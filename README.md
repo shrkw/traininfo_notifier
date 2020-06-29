@@ -8,10 +8,9 @@ use VS Code Remote development extension.
 
 ## Deploy
 
-install git and pip at first.
-
 ```bash
-pip3 install pipenv
+sudo apt-get -y install git python3-pip
+curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python3
 git clone git@github.com:shrkw/traininfo_notifier.git
 cd traininfo_notifier
 python3 -m venv .venv && ~/.poetry/bin/poetry install --no-dev
