@@ -6,7 +6,7 @@ authors = ["shrkw <shrkwh@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.7"
-google-cloud-texttospeech = "^2.1.0"
+google-cloud-texttospeech = "1.0.1"
 pychromecast = "^6.0.0"
 requests = "^2.24.0"
 lxml = "^4.5.1"
