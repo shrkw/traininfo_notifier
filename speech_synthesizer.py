@@ -30,3 +30,8 @@ class SpeechSynthesizer:
         with open(output, "wb") as out:
             out.write(response.audio_content)
             print('Audio content written to file "%s"' % output)
+
+
+if __name__ == "__main__":
+    synth = SpeechSynthesizer()
+    synth.synthesize("おはようございます", Path("tmp").joinpath("foo.mp3"))
