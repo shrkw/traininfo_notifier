@@ -1,5 +1,6 @@
 import datetime
 import http.server
+import logging
 import socket
 import socketserver
 import time
@@ -10,9 +11,11 @@ from caster import Caster
 from speech_synthesizer import SpeechSynthesizer
 from yahoo_train_info_scraper import YahooTrainInfoScraper
 
+logger = logging.getLogger(__name__)
+
 
 def serve(port):
-    print("serving at port", port)
+    logger.info(f"serving at port {port}")
     Handler = http.server.SimpleHTTPRequestHandler
     with socketserver.TCPServer(("", port), Handler) as httpd:
         httpd.serve_forever()
@@ -38,6 +41,6 @@ class Server:
         # send to chromecast (as a promise, audio file is hosted by another http.server process)
         caster = Caster(friendly_name)
         server_host = Server.ip_addr()
-        print(f"serve at {server_host}:{port}")
+        logger.info(f"serve at {server_host}:{port}")
         caster.cast(f"http://{server_host}:{port}/{file_path}")
         time.sleep(20)

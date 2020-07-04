@@ -1,6 +1,9 @@
+import logging
 from pathlib import Path
 
 from google.cloud import texttospeech
+
+logger = logging.getLogger(__name__)
 
 
 class SpeechSynthesizer:
@@ -28,7 +31,7 @@ class SpeechSynthesizer:
         response = client.synthesize_speech(synthesis_input, voice, audio_config)
         with open(output, "wb") as out:
             out.write(response.audio_content)
-            print('Audio content written to file "%s"' % output)
+            logger.info('Audio content written to file "%s"' % output)
 
 
 if __name__ == "__main__":

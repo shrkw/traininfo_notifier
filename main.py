@@ -1,4 +1,5 @@
 import datetime
+import logging
 import os
 from pathlib import Path
 
@@ -10,9 +11,14 @@ from yahoo_train_info_scraper import YahooTrainInfoScraper
 friendly_name = os.getenv("FRIENDLY_NAME")
 train_info_url = os.getenv("TRAIN_INFO_URL")
 
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+)
+logger = logging.getLogger(__name__)
+
 
 def main():
-    print("Start")
+    logger.info("Start")
     # fetch info
     scraper = YahooTrainInfoScraper()
     title, status = scraper.fetch_train_info(train_info_url)
@@ -29,7 +35,7 @@ def main():
     server = Server()
     server.start(friendly_name, dest_path)
 
-    print("Finish")
+    logger.info("Finish")
 
 
 if __name__ == "__main__":

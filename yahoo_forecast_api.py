@@ -1,8 +1,10 @@
 import json
+import logging
 from typing import Dict, List
 
 import requests
 
+logger = logging.getLogger(__name__)
 
 class YahooForecastApi:
     path = "tmp/rain_state.txt"
@@ -32,7 +34,7 @@ class YahooForecastApi:
                 if line == "True":
                     return True
         except FileNotFoundError:
-            print("File not found.")
+            logger.info("File not found.")
         return False
 
     def save_result(self, result: bool) -> None:
@@ -47,14 +49,14 @@ class YahooForecastApi:
 
         if not rainy_forecast:
             # 雨が予測されていないなら終了
-            print("not rainy forecast")
+            logger.info("not rainy forecast")
             self.save_result(False)
             return None
 
         previousResult = self.get_previous_result()
         self.save_result(True)
 
-        print(f"previous: {previousResult}, current: {rainy_forecast}")
+        logger.info(f"previous: {previousResult}, current: {rainy_forecast}")
         if (not previousResult) and rainy_forecast:
             # 前回が雨予報でなく、今回のが雨予報なら通知する
             return "ヤフーの気象情報によると、雨雲が近づいており、１時間以内に雨が予測されています。"

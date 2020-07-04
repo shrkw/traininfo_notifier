@@ -1,4 +1,5 @@
 import datetime
+import logging
 import os
 from pathlib import Path
 
@@ -13,9 +14,14 @@ train_info_url = os.getenv("TRAIN_INFO_URL")
 location = os.getenv("LOCATION")
 yahoo_app_id = os.getenv("YAHOO_APP_ID")
 
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+)
+logger = logging.getLogger(__name__)
+
 
 def main():
-    print("Start")
+    logger.info("Start")
     # fetch info
     api = YahooForecastApi(location, yahoo_app_id)
     status = api.run()
@@ -32,7 +38,7 @@ def main():
     server = Server()
     server.start(friendly_name, dest_path)
 
-    print("Finish")
+    logger.info("Finish")
 
 
 if __name__ == "__main__":
