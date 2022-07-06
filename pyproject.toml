@@ -9,7 +9,7 @@ python = "^3.7"
 google-cloud-texttospeech = "1.0.1"
 pychromecast = "^6.0.0"
 requests = "^2.24.0"
-lxml = "^4.5.1"
+lxml = "^4.9.1"
 
 [tool.poetry.dev-dependencies]
 black = "^19.10b0"
